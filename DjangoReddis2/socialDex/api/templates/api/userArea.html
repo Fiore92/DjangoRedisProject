@@ -1,0 +1,14 @@
+{% extends 'api/base.html' %}
+
+{% block content %}
+{% if error == 1 %}
+
+<h1>There is no user with that id</h1>
+
+{% endif %}
+{% if error == 0 %}
+
+<h1> The following user is associated with the id {{pk}}: {{username}}</h1>
+
+{% endif %}
+{% endblock %}

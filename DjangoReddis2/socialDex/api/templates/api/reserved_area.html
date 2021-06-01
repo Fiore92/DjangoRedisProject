@@ -1,0 +1,13 @@
+{% extends 'api/base.html' %}
+
+{% block content %}
+
+<table>
+    <tr><th>Autore</th><th>Num.Post</th></tr>
+{% for r in response%}
+    <tr>
+<p> <td>{{r.author}}</td><td>{{r.count}}</td></p>
+    </tr>
+{% endfor %}
+</table>
+{% endblock %}

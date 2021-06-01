@@ -1,0 +1,20 @@
+{% extends 'api/base.html' %}
+
+{% block content %}
+{% if messages %}
+{% for message in messages %}
+<p {% if message.tags == 'success' %} class="alert alert-success">{{message}}<{% endif %}/p>
+<p {% if message.tags == 'error' %} class="alert alert-danger">{{message}}<{% endif %}/p>
+
+{% endfor %}
+{% endif %}
+     <form method="POST" class="post-form">{% csrf_token %}
+
+         <p>Name</p>
+         <p>{{ form.username }}</p>
+         <p>Password</p>
+         <input type="password" id="pass" name="password" required>
+         <p style="text-align:center;">Admin</p><p style="text-align:center;">{{form.is_superuser}}</p>
+         <button type="submit" class="save btn btn-default">Save</button>
+     </form>
+{% endblock %}

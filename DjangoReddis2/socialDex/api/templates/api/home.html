@@ -1,0 +1,34 @@
+{% extends 'api/base.html' %}
+{% block content %}
+{% if messages %}
+{% for message in messages %}
+<p {% if message.tags == 'success' %} class="alert alert-success">{{message}}<{% endif %}/p>
+<p {% if message.tags == 'error' %} class="alert alert-danger">{{message}}<{% endif %}/p>
+{% endfor %}
+{% endif %}
+<form method="POST" class="post-form">{% csrf_token %}
+
+         <h1>Write a comment:{{ form.text }}</h1>
+
+         <button type="submit" class="save btn btn-default">Save</button>
+     </form>
+<h1>Most recent posts</h1>
+<table style="width:100%">
+    <tr>
+    <th>Author</th>
+    <th>text</th>
+    <th>link</th>
+    <th>date</th>
+
+  </tr>
+{% for r in response %}
+    <tr>
+    <td>{{r.author}}</td>
+    <td>{{r.text}}</td>
+    <td>{{r.linkOnChain}}</td>
+    <td>{{r.datetime}}</td>
+
+    </tr>
+{% endfor %}
+</table>
+{% endblock %}

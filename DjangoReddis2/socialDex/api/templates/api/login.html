@@ -1,0 +1,21 @@
+{% extends 'api/base.html' %}
+{% block content %}
+<h1>Log in</h1>
+<br>
+
+
+{% if messages %}
+{% for message in messages %}
+<p {% if message.tags == 'error' %} class="alert alert-danger">{{message}}<{% endif %}/p>
+{% endfor %}
+{% endif %}
+
+<form method="POST" class="post-form">{% csrf_token %}
+    <p>Name</p>
+         <p>{{ form.username }}</p>
+    <p>Password</p>
+         <input type="password" id="pass" name="password" required>
+         <button type="submit" class="save btn btn-default">Go</button>
+     </form>
+
+{% endblock %}
